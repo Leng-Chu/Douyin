@@ -1,0 +1,18 @@
+mysql:
+  user: root
+  pass: zlc020706
+  host: 127.0.0.1
+  port: 3306
+  dbname: douyin
+  charset: utf8mb4
+  parsetime: True
+  loc: Local
+
+redis:
+  host : 127.0.0.1
+  port : 6379
+  pass :
+
+ip : 10.133.177.103
+
+ffmpeg : C:\Users\lc\GolandProjects\Douyin\middleware\ffmpeg\ffmpeg.exe
