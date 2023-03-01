@@ -13,6 +13,6 @@ redis:
   port : 6379
   pass :
 
-ip : 10.133.177.103
+ip : 10.255.6.15
 
 ffmpeg : C:\Users\lc\GolandProjects\Douyin\middleware\ffmpeg\ffmpeg.exe

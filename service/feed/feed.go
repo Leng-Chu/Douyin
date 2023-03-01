@@ -8,11 +8,9 @@ import (
 )
 
 func GetFeedList(guestId uint, lastTime int64) ([]common.Video, int64) {
-	var feedVideoList []common.Video
-	feedVideoList = make([]common.Video, 0)
-
-	videoList := FeedGet(lastTime)
 	var newTime int64 = 0
+	videoList := repository.GetVideoListByTime(time.Unix(lastTime/1000, 0), guestId)
+	var retList []common.Video
 	for _, x := range videoList {
 		var tmp common.Video
 		tmp.Id = x.ID
@@ -27,15 +25,8 @@ func GetFeedList(guestId uint, lastTime int64) ([]common.Video, int64) {
 		tmp.CommentCount = repository.GetCommentCountById(tmp.Id)
 		tmp.IsFavorite = repository.IsBFavoriteA(tmp.Id, guestId)
 
-		feedVideoList = append(feedVideoList, tmp)
+		retList = append(retList, tmp)
 		newTime = x.CreatedAt.Unix() * 1000
 	}
-	return feedVideoList, newTime
-}
-
-func FeedGet(lastTime int64) []repository.Video {
-
-	inputTime := time.Unix(lastTime/1000, 0)
-	var videoList = repository.GetVideoListByTime(inputTime)
-	return videoList
+	return retList, newTime
 }

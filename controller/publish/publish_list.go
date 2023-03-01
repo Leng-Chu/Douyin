@@ -31,7 +31,7 @@ func List(c *gin.Context) {
 
 	//调用query方法得到要查询的用户id
 	idStr := c.Query("user_id")
-	userId, err := strconv.ParseUint(idStr, 10, 32)
+	userId, err := strconv.ParseUint(idStr, 10, 64)
 	if err != nil {
 		c.JSON(http.StatusOK, ListResponse{
 			Response: common.Response{

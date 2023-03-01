@@ -29,9 +29,9 @@ func GetVideoListByUserId(id uint) []Video {
 	return videoList
 }
 
-func GetVideoListByTime(inputTime time.Time) []Video {
+func GetVideoListByTime(inputTime time.Time, userId uint) []Video {
 	var videoList []Video
-	DB.Model(Video{}).Where("created_at < ?", inputTime).Order("created_at desc").Find(&videoList)
+	DB.Model(Video{}).Where("created_at < ? AND author_id <> ?", inputTime, userId).Order("created_at desc").Find(&videoList)
 	return videoList
 }
 

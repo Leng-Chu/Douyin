@@ -16,7 +16,7 @@ func Action(userId uint, VideoId uint, actionType uint) (err error) {
 		if err != nil {
 			return err
 		}
-	} else if actionType == 0 && isFavorite {
+	} else if actionType == 2 && isFavorite {
 		// 取消点赞操作
 		err := repository.DeleteFavorite(VideoId, userId)
 		if err != nil {
