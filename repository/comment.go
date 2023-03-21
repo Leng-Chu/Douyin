@@ -48,11 +48,8 @@ func DeleteComment(id uint) error {
 func GetCommentList(id uint) ([]Comment, error) {
 	var CommentList []Comment
 	result := DB.Model(Comment{}).Where("video_id = ?", id).Find(&CommentList)
-	if result.RowsAffected == 0 {
-		return nil, nil
-	}
 	if result.Error != nil {
-		return CommentList, errors.New("get comment list failed")
+		return nil, errors.New("get comment list failed")
 	}
 	return CommentList, nil
 }

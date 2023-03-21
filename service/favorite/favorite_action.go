@@ -5,20 +5,20 @@ import (
 	"errors"
 )
 
-func Action(userId uint, VideoId uint, actionType uint) (err error) {
+func Action(userId uint, videoId uint, actionType uint) (err error) {
 	if userId == 0 {
 		return errors.New("user not logged in")
 	}
-	isFavorite := repository.IsBFavoriteA(VideoId, userId)
+	isFavorite := repository.IsBFavoriteA(videoId, userId)
 	if actionType == 1 && !isFavorite {
 		// 点赞操作
-		err := repository.AddFavorite(VideoId, userId)
+		err := repository.AddFavorite(videoId, userId)
 		if err != nil {
 			return err
 		}
 	} else if actionType == 2 && isFavorite {
 		// 取消点赞操作
-		err := repository.DeleteFavorite(VideoId, userId)
+		err := repository.DeleteFavorite(videoId, userId)
 		if err != nil {
 			return err
 		}

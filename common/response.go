@@ -1,6 +1,6 @@
 package common
 
-// 返回响应时需要用到的结构体，为demo自带，不需要修改
+// 返回响应时需要用到的结构体
 
 type Response struct {
 	StatusCode int32  `json:"status_code"`
@@ -24,7 +24,7 @@ type User struct {
 type Video struct {
 	Id            uint   `json:"id,omitempty"`
 	Author        User   `json:"author"`
-	PlayUrl       string `json:"play_url" json:"play_url,omitempty"`
+	PlayUrl       string `json:"play_url,omitempty"`
 	CoverUrl      string `json:"cover_url,omitempty"`
 	FavoriteCount uint   `json:"favorite_count,omitempty"`
 	CommentCount  uint   `json:"comment_count,omitempty"`
@@ -41,17 +41,8 @@ type Comment struct {
 
 type Message struct {
 	Id         uint   `json:"id,omitempty"`
-	Content    string `json:"content,omitempty"`
-	CreateTime string `json:"create_time,omitempty"`
-}
-
-type MessageSendEvent struct {
-	UserId     uint   `json:"user_id,omitempty"`
 	ToUserId   uint   `json:"to_user_id,omitempty"`
-	MsgContent string `json:"msg_content,omitempty"`
-}
-
-type MessagePushEvent struct {
-	FromUserId uint   `json:"user_id,omitempty"`
-	MsgContent string `json:"msg_content,omitempty"`
+	FromUserId uint   `json:"from_user_id,omitempty"`
+	Content    string `json:"content,omitempty"`
+	CreateTime int64  `json:"create_time,omitempty"`
 }

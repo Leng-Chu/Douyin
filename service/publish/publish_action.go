@@ -4,6 +4,7 @@ import (
 	"Douyin/config"
 	"Douyin/middleware/ffmpeg"
 	"Douyin/repository"
+	"strconv"
 )
 
 func GetVideoCover(path string, name string, playSuffix string) (string, error) {
@@ -18,8 +19,9 @@ func GetVideoCover(path string, name string, playSuffix string) (string, error) 
 }
 
 func UploadVideo(authorId uint, title string, playName string, coverName string) error {
-	ip := config.Conf.Ip
-	urlPrefix := "http://" + ip + ":8080" + "/data/"
+	ip := config.Conf.Server.Ip
+	port := config.Conf.Server.Port
+	urlPrefix := "http://" + ip + ":" + strconv.Itoa(port) + "/data/"
 	newVideo := repository.Video{
 		AuthorId: authorId,
 		PlayUrl:  urlPrefix + playName,

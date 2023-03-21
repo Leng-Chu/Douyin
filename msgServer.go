@@ -2,17 +2,19 @@ package main
 
 import (
 	"Douyin/common"
+	"Douyin/config"
 	"encoding/json"
 	"fmt"
 	"io"
 	"net"
+	"strconv"
 	"sync"
 )
 
 var chatConnMap = sync.Map{}
 
 func RunMessageServer() {
-	listen, err := net.Listen("tcp", "127.0.0.1:9090")
+	listen, err := net.Listen("tcp", "127.0.0.1:"+strconv.Itoa(config.Conf.Server.MsgPort))
 	if err != nil {
 		fmt.Printf("Run message sever failed: %v\n", err)
 		return

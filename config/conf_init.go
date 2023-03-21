@@ -23,10 +23,16 @@ type Redis struct {
 	Pass string `yaml:"pass"`
 }
 
+type Server struct {
+	Ip      string `yaml:"ip"`
+	Port    int    `yaml:"port"`
+	MsgPort int    `yaml:"msgport"`
+}
+
 type Yaml2Go struct {
 	Mysql  Mysql  `yaml:"mysql"`
 	Redis  Redis  `yaml:"redis"`
-	Ip     string `yaml:"ip"`
+	Server Server `yaml:"server"`
 	Ffmpeg string `yaml:"ffmpeg"`
 }
 

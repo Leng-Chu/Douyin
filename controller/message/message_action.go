@@ -1,16 +1,14 @@
-package favorite
+package message
 
 import (
 	"Douyin/common"
-	"Douyin/service/favorite"
+	"Douyin/service/message"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
 )
 
-// Action 进行点赞操作
 func Action(c *gin.Context) {
-
 	//从token中解析出id，得到的是当前登录用户的id
 	idToken, _ := c.Get("user_id")
 	userId, ok := idToken.(uint)
@@ -22,8 +20,8 @@ func Action(c *gin.Context) {
 		return
 	}
 
-	var strActionType = c.Query("action_type")
-	actionType, err := strconv.ParseUint(strActionType, 10, 64)
+	strToUserId := c.Query("to_user_id")
+	toUserId, err := strconv.ParseUint(strToUserId, 10, 64)
 	if err != nil {
 		c.JSON(http.StatusOK, common.Response{
 			StatusCode: 1,
@@ -32,17 +30,9 @@ func Action(c *gin.Context) {
 		return
 	}
 
-	var strVideoId = c.Query("video_id")
-	VideoId, err := strconv.ParseUint(strVideoId, 10, 64)
-	if err != nil {
-		c.JSON(http.StatusOK, common.Response{
-			StatusCode: 1,
-			StatusMsg:  err.Error(),
-		})
-		return
-	}
+	content := c.Query("content")
 
-	err = favorite.Action(userId, uint(VideoId), uint(actionType))
+	err = message.Action(userId, uint(toUserId), content)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, common.Response{
 			StatusCode: 1,

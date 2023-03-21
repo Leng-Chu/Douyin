@@ -13,6 +13,9 @@ redis:
   port : 6379
   pass :
 
-ip : 10.255.6.15
+server:
+  ip : 10.255.6.15
+  port : 8080
+  msgport : 9090
 
 ffmpeg : C:\Users\lc\GolandProjects\Douyin\middleware\ffmpeg\ffmpeg.exe
