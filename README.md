@@ -19,13 +19,39 @@
 
     - Redis 5.0.14
 
-   以上环境的安装教程百度即可。
+2. 在`./config`文件夹下建立`config.yaml`文件，将以下代码复制到该文件中：
 
-2. 根据自己的环境修改`./config/config.yaml`中的内容，需要修改数据库的用户名和密码，本机ip地址，ffmpeg.exe的绝对路径。
+   ```yaml
+   mysql:
+     user: root
+     pass: 123456
+     host: 127.0.0.1
+     port: 3306
+     dbname: douyin
+     charset: utf8mb4
+     parsetime: True
+     loc: Local
+   
+   redis:
+     host : 127.0.0.1
+     port : 6379
+     pass :
+   
+   server:
+     ip : 
+     port : 8080
+     msgport : 9090
+   
+   ffmpeg : C:\xxx\Douyin\middleware\ffmpeg\ffmpeg.exe
+   ```
 
-   完成以上步骤并确保mysql中存在名为douyin的数据库，在终端输入`go run main.go msgServer.go`即可自动下载依赖并运行。
+   根据自己的环境修改`./config/config.yaml`中的内容，一般只需要修改数据库的用户名和密码，服务器ip地址，ffmpeg.exe的绝对路径，若有其他需要也可自行修改。
 
-3. 使用安卓模拟器或安卓手机进行测试，[可以参考这篇文章](https://juejin.cn/post/7192600701745233979)。
+3. 在mysql中建立名为douyin的数据库（可以是其他名字，需要修改`config.yaml`中的数据库名）。
+
+4. 在终端输入`go run main.go msgServer.go`即可自动下载依赖并运行。
+
+5. 使用安卓模拟器或安卓手机进行测试，[可以参考这篇文章](https://juejin.cn/post/7192600701745233979)。
 
 ### 三. 项目架构
 
@@ -62,9 +88,7 @@
 
         * 面向数据库进行增删改查。
 
-3. 文件目录说明
-
-   其中controller和service文件夹中根据功能模块做了分包，如果不涉及对其他模块的调用，可以只专注于自己负责的部分。
+3. 文件目录说明：其中controller和service文件夹中根据功能模块做了分包。
 
    ```
    Douyin 
@@ -80,7 +104,7 @@
    ├── /router/ 路由配置
    ├── /data/ 上传的视频文件存储在本地的路径，若不存在会自动创建
    ├── /go.mod/
-   ├── msgServer.go  demo中提供的消息服务，不太清楚怎么用
+   ├── msgServer.go  青训营demo中已经实现好的消息服务
    ├── main.go  程序入口
    └── README.md
    ```
