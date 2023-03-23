@@ -45,7 +45,7 @@
    ffmpeg : C:\xxx\Douyin\middleware\ffmpeg\ffmpeg.exe
    ```
 
-   根据自己的环境修改`./config/config.yaml`中的内容，一般只需要修改数据库的用户名和密码，服务器ip地址，ffmpeg.exe的绝对路径，若有其他需要也可自行修改。
+   根据自己的环境修改配置文件中的内容，一般只需要修改数据库的用户名和密码，服务器ip地址，ffmpeg.exe的绝对路径，若有其他需要也可自行修改。
 
 3. 在mysql中建立名为douyin的数据库（可以是其他名字，需要修改`config.yaml`中的数据库名）。
 
