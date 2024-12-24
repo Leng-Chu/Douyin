@@ -1,7 +1,5 @@
 # 抖音项目服务端 -- 第五届字节跳动青训营项目
 
-（如果 README.md 中的图片无法显示，建议科学上网）
-
 ### 一. 相关文档
 
 - [抖音项目方案说明](https://bytedance.feishu.cn/docs/doccnKrCsU5Iac6eftnFBdsXTof)
@@ -70,8 +68,6 @@
         * yaml：写配置文件
 
 2. 采用 **repository → service → controller** 的分层结构：
-
-   <img src="https://raw.githubusercontent.com/Leng-Chu/picture/main/2023/02/upgit_20230204_1675513814.png" alt="image-20230204203013698" style="zoom: 60%;" />
 
     * **controller层**
         * 解析得到参数，传递给service层。
